@@ -41,6 +41,7 @@ if (Meteor.isClient) {
           if (ad.plz) {
             Meteor.call('getDistance', $scope.query.plz, ad.plz, function(err, response) {
               ad.distance = response
+              $scope.$apply();
             });
           }
         });
