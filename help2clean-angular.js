@@ -2,7 +2,7 @@ Ads = new Mongo.Collection("ads");
 
 //IMAGES
 var createSquareThumb = function(fileObj, readStream, writeStream) {
-  var size = '130';
+  var size = '200';
   gm(readStream).autoOrient().resize(size, size + '^').gravity('Center').extent(size, size).stream('PNG').pipe(writeStream);
 };
 
@@ -52,6 +52,7 @@ if (Meteor.isClient) {
         });
       };
       $scope.submit = function() {
+        $scope.newAd.created = new Date().getTime();
         $scope.ads.save($scope.newAd);
         $state.go('search');
       }
