@@ -28,14 +28,15 @@ if (Meteor.isClient) {
     }
   ]);
 
-  angular.module('h2c').controller('SubmitController', ['$scope',
-    function($scope) {
+  angular.module('h2c').controller('SubmitController', ['$scope', '$meteor', '$state',
+    function($scope, $meteor, $state) {
+      $scope.ads = $meteor.collection(Ads);
       $scope.uploadFile = function() {
         FS.Utility.eachFile(event, function(file) {
           Images.insert(file, function(err, fileObj) {
             if (!err) {
               // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
-              Session.set('imageId', fileObj._id);
+              $scope.pic = fileObj._id;
             } else {
               console.log(err)
             }
@@ -43,6 +44,10 @@ if (Meteor.isClient) {
           });
         });
       };
+      $scope.submit = function() {
+        $scope.ads.save($scope.newAd);
+        $state.go('search');
+      }
     }
   ]);
 
