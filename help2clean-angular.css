@@ -85,15 +85,6 @@ div.half-screen-button:hover {
 	margin: 0;
 }
 
-.card-img {
-	width: 130px;
-	box-shadow: 0px 0px 2px #bbb;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	border-radius: 1px;
-	transform: rotate(-3deg);
-}
 
 .clearing {
 	clear: both;
@@ -117,9 +108,10 @@ div.half-screen-button:hover {
 	text-align: left;
 }
 
-img {
+.card-img {
   float:left;
   width: 130px ;
   margin: -22px 20px 5px -30px;
   transform: rotate(-3deg);
+  box-shadow: 0px 0px 2px #bbb;
 }

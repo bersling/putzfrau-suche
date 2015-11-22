@@ -38,10 +38,8 @@ if (Meteor.isClient) {
         }
 
         angular.forEach($scope.ads, function(ad) {
-          console.log(ad);
           if (ad.plz) {
             Meteor.call('getDistance', $scope.query.plz, ad.plz, function(err, response) {
-              console.log(response)
               ad.distance = response
             });
           }

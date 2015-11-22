@@ -9,8 +9,8 @@
 
 	<br>
 	<div class="cards-wrapper">
-		<div class="search-card mb" ng-repeat="ad in ads">
-    	<img class="leftimage" ng-src="{{getImageUrl(ad.pic)}}" alt="">
+		<div class="search-card mb" ng-repeat="ad in ads | orderBy: 'distance'">
+    	<img class="card-img" ng-src="{{getImageUrl(ad.pic)}}" alt="">
 
 	    <h4 class="first">{{ad.name}}</h4>
 	    <p><a href="mailto:{{email}}" class="email">{{ad.email}}</a></p>
