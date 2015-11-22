@@ -86,7 +86,7 @@ if (Meteor.isServer) {
           ",Schweiz&key=AIzaSyBTGVUac5RqaXPe_Dfsooz5ake9O0X2-Hs";
       var result = HTTP.get( distanceUrl );
       if (result.data.rows && result.data.rows[0]) {
-        return result.data.rows[0].elements[0].distance.text;
+        return result.data.rows[0].elements[0].distance;
       }
     }
   });

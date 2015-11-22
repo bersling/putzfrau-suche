@@ -9,14 +9,14 @@
 
 	<br>
 	<div class="cards-wrapper">
-		<div class="search-card mb" ng-repeat="ad in ads | orderBy: 'distance'">
+		<div class="search-card mb" ng-repeat="ad in ads | orderBy: 'distance.value'">
     	<img class="card-img" ng-src="{{getImageUrl(ad.pic)}}" alt="">
 
 	    <h4 class="first">{{ad.name}}</h4>
 	    <p><a href="mailto:{{email}}" class="email">{{ad.email}}</a></p>
 	    <p class="age">Alter: {{ad.age}}</p>
 	    <p class="price">Preis: {{ad.price}} CHF/h</p>
-	    <p class="price" ng-if="ad.plz && query.plz">Entfernung: {{ad.distance}}</p>
+	    <p class="price" ng-if="ad.plz && query.plz">Entfernung: {{ad.distance.text}}</p>
 	    <p class="d2">{{ad.description}}</p>
 	    <p class="clearing"></p>
 
