@@ -22,21 +22,28 @@ if (Meteor.isClient) {
 
   angular.module('h2c').controller('SearchController', ['$scope', '$meteor',
     function($scope, $meteor) {
-
       $scope.ads = $meteor.collection(Ads);
-
+      $scope.images = $meteor.collectionFS(Images, false, Images);
+      $scope.getImageUrl = function(id) {
+        var img = Images.findOne(id);
+        if (img) {
+          return Images.findOne(id).url();
+        }
+      }
     }
   ]);
 
   angular.module('h2c').controller('SubmitController', ['$scope', '$meteor', '$state',
     function($scope, $meteor, $state) {
       $scope.ads = $meteor.collection(Ads);
+      $scope.images = $meteor.collectionFS(Images, false, Images);
+      $scope.newAd = {};
       $scope.uploadFile = function() {
         FS.Utility.eachFile(event, function(file) {
           Images.insert(file, function(err, fileObj) {
             if (!err) {
               // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
-              $scope.pic = fileObj._id;
+              $scope.newAd.pic = fileObj._id;
             } else {
               console.log(err)
             }
