@@ -1,0 +1,29 @@
+<div class="container center div-center" ng-app="help2clean" ng-controller="SearchController">
+
+	<br>
+	<br>
+
+	<div class="search-wrapper">
+		<input type="number" class="form-control" id="plz-query" placeholder="Ihre Postleitzahl">
+	</div>
+
+	<br>
+	<div class="cards-wrapper">
+		<div class="search-card mb" ng-repeat="ad in ads">
+    
+    	<div class="leftimage" ng-repeat="image in images">
+    		<img class="leftimage" src="{{image.url}}" alt="">
+    	</div>
+
+	    <h4 class="first">{{ad.name}}</h4>
+	    <p><a href="mailto:{{email}}" class="email">{{ad.email}}</a></p>
+	    <p class="age">Alter: {{ad.age}}</p>
+	    <p class="price">Preis: {{ad.price}} CHF/h</p>
+	    <p class="price" ng-if="getCurrentPlz()">Entfernung:<!-- {{getDistanceTo plz}} {{updateSession getCurrentPlz plz}} --></p>
+	    <p class="d2">{{ad.description}}</p>
+	    <p class="clearing"></p>
+
+		</div>
+	</div>
+
+</div>

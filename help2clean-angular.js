@@ -1,7 +1,8 @@
+Ads = new Mongo.Collection("ads");
+
 if (Meteor.isClient) {
 
   // This code only runs on the client
-   angular.module('h2c',['angular-meteor', 'ui.router']);
 
    angular.module('h2c').config(function($urlRouterProvider, $stateProvider, $locationProvider){
    
@@ -9,31 +10,32 @@ if (Meteor.isClient) {
  
      $stateProvider
        .state('home', {
-         url: '/home',
+         url: '/',
          templateUrl: 'home.html',
-         controller: 'HomeCtrl'
+         controller: 'HomeController'
        }).state('search', {
          url: '/search',
          templateUrl: 'search.html',
-         controller: 'SearchCtrl'
+         controller: 'SearchController'
+       }).state('submit', {
+         url: '/submit',
+         templateUrl: 'submit.html',
+         controller: 'SubmitController'
        });
  
-     $urlRouterProvider.otherwise("/home");
+     $urlRouterProvider.otherwise("/");
    });
 
-   angular.module('h2c').controller('HomeCtrl', ['$scope',
+   angular.module('h2c').controller('HomeController', ['$scope',
      function ($scope) {
   
    }]);
 
-   angular.module('h2c').controller('SearchCtrl', ['$scope',
-     function ($scope) {
+
+   angular.module('h2c').controller('SearchController', ['$scope', '$meteor',
+     function ($scope, $meteor) {
    
-       $scope.tasks = [
-         { text: 'This is task 1' },
-         { text: 'This is task 2' },
-         { text: 'This is task 3' }
-       ];
+       $scope.ads = $meteor.collection(Ads);
    
    }]);
 }

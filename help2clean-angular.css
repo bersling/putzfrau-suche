@@ -1,1 +1,125 @@
 /* CSS declarations go here */
+body {
+	font-family: 'Indie Flower', cursive;	
+	font-family: 'Poiret One', cursive;
+	font-family: 'Shadows Into Light', cursive;
+	font-family: 'Quicksand', sans-serif;
+
+	font-family: 'Open Sans', sans-serif;
+	/*background-image: url('/img/light_wool.png');*/
+}
+
+div.half-screen-button {
+	height: 50vh;
+	text-align: center;
+	font-size: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-bottom: 1px solid #ccc;
+	padding: 30px;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.search-card.mb {
+	margin-bottom: 30px;
+}
+
+
+
+.search-filters {
+	max-width: 400px;
+	margin: 0 auto;
+}
+
+.page-wrapper {
+	max-width: 400px;
+	margin: 0 auto;
+}
+
+.mb {
+	margin-bottom: 20px;
+}
+
+div.half-screen-button:hover {
+	background: #F3F3F3;
+	cursor: pointer;
+}
+
+.page {
+	padding: 20px;
+}
+
+.center {
+	text-align: center;
+}
+
+.div-center {
+	margin: auto;
+}
+
+.search-card {
+	margin: 0 auto;
+	max-width: 400px;
+	position: relative;
+	background-image: url('/img/light_wool.png');
+	box-shadow: 0 0 20px #ccc;
+	padding: 20px;
+}
+
+.email {
+	overflow: hidden;
+	font-size: 14px;
+}
+
+.search-wrapper {
+	max-width: 400px;
+	margin: auto;
+}
+
+.container-fluid {
+	padding: 0;
+	margin: 0;
+}
+
+.card-img {
+	width: 130px;
+	box-shadow: 0px 0px 2px #bbb;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	border-radius: 1px;
+	transform: rotate(-3deg);
+}
+
+.clearing {
+	clear: both;
+}
+
+.first {
+	font-size: 25px;
+}
+
+.age {
+	font-size: 14px;
+	margin-bottom: 0;
+}
+
+.price {
+	font-size: 14px;
+}
+
+
+.cards-wrapper {
+	text-align: left;
+}
+
+img {
+  float:left;
+  width: 130px ;
+  margin: -22px 20px 5px -30px;
+  transform: rotate(-3deg);
+}
