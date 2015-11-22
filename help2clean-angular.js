@@ -6,9 +6,13 @@ var createSquareThumb = function(fileObj, readStream, writeStream) {
   gm(readStream).autoOrient().resize(size, size + '^').gravity('Center').extent(size, size).stream('PNG').pipe(writeStream);
 };
 
-var thumbStore = new FS.Store.FileSystem("thumbs", { transformWrite: createSquareThumb });
+var thumbStore = new FS.Store.FileSystem("thumbs", {
+  transformWrite: createSquareThumb
+});
 
-Images = new FS.Collection("images", { stores: [thumbStore] });
+Images = new FS.Collection("images", {
+  stores: [thumbStore]
+});
 //END IMAGES
 
 
@@ -32,7 +36,7 @@ if (Meteor.isClient) {
         }
       };
       $scope.updateDistances = function() {
-        
+
         if ($scope.query.plz < 1000 || $scope.query.plz > 9999) {
           return
         }
@@ -69,7 +73,7 @@ if (Meteor.isClient) {
       };
       $scope.submit = function() {
         $scope.newAd.created = new Date().getTime();
-        $scope.ads.save($scope.newAd);
+        Meteor.call('addAd', $scope.newAd);
         $state.go('search');
       }
     }
@@ -79,20 +83,36 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
 
+  Images.allow({
+    download: function(userId, fileObj) {
+      return true
+    },
+    'insert': function () {
+      // add custom authentication code here
+      return true;
+    },
+    'update': function () {
+      // add custom authentication code here
+      return true;
+    }
+  });
 
   Meteor.methods({
     getDistance: function(origin, dest) {
       var distanceUrl = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" +
-          origin + ",Schweiz&destinations=" + dest +
-          ",Schweiz&key=AIzaSyBTGVUac5RqaXPe_Dfsooz5ake9O0X2-Hs";
-      var result = HTTP.get( distanceUrl );
+        origin + ",Schweiz&destinations=" + dest +
+        ",Schweiz&key=AIzaSyBTGVUac5RqaXPe_Dfsooz5ake9O0X2-Hs";
+      var result = HTTP.get(distanceUrl);
       if (result.data.rows && result.data.rows[0]) {
         return result.data.rows[0].elements[0].distance;
       }
+    },
+    addAd: function(newAd) {
+      Ads.insert(newAd);
     }
   });
 
-  Meteor.startup(function () {
+  Meteor.startup(function() {
     //Ads.remove({});
     // code to run on server at startup
   });
