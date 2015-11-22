@@ -4,7 +4,7 @@
 	<br>
 
 	<div class="search-wrapper">
-		<input type="number" class="form-control" id="plz-query" placeholder="Ihre Postleitzahl">
+		<input ng-model="query.plz" ng-change="updateDistances()" type="number" class="form-control" id="plz-query" placeholder="Ihre Postleitzahl">
 	</div>
 
 	<br>
@@ -16,7 +16,7 @@
 	    <p><a href="mailto:{{email}}" class="email">{{ad.email}}</a></p>
 	    <p class="age">Alter: {{ad.age}}</p>
 	    <p class="price">Preis: {{ad.price}} CHF/h</p>
-	    <p class="price" ng-if="getCurrentPlz()">Entfernung:<!-- {{getDistanceTo plz}} {{updateSession getCurrentPlz plz}} --></p>
+	    <p class="price" ng-if="ad.plz && query.plz">Entfernung: {{ad.distance}}</p>
 	    <p class="d2">{{ad.description}}</p>
 	    <p class="clearing"></p>
 

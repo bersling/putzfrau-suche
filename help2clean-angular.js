@@ -24,12 +24,29 @@ if (Meteor.isClient) {
     function($scope, $meteor) {
       $scope.ads = $meteor.collection(Ads);
       $scope.images = $meteor.collectionFS(Images, false, Images);
+      $scope.query = {};
       $scope.getImageUrl = function(id) {
         var img = Images.findOne(id);
         if (img) {
           return Images.findOne(id).url();
         }
-      }
+      };
+      $scope.updateDistances = function() {
+        
+        if ($scope.query.plz < 1000 || $scope.query.plz > 9999) {
+          return
+        }
+
+        angular.forEach($scope.ads, function(ad) {
+          console.log(ad);
+          if (ad.plz) {
+            Meteor.call('getDistance', $scope.query.plz, ad.plz, function(err, response) {
+              console.log(response)
+              ad.distance = response
+            });
+          }
+        });
+      };
     }
   ]);
 
@@ -62,7 +79,22 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
-  Meteor.startup(function() {
+
+
+  Meteor.methods({
+    getDistance: function(origin, dest) {
+      var distanceUrl = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" +
+          origin + ",Schweiz&destinations=" + dest +
+          ",Schweiz&key=AIzaSyBTGVUac5RqaXPe_Dfsooz5ake9O0X2-Hs";
+      var result = HTTP.get( distanceUrl );
+      if (result.data.rows && result.data.rows[0]) {
+        return result.data.rows[0].elements[0].distance.text;
+      }
+    }
+  });
+
+  Meteor.startup(function () {
+    //Ads.remove({});
     // code to run on server at startup
   });
 }
