@@ -21,3 +21,4 @@ angularui:angular-ui-router
 twbs:bootstrap
 cfs:filesystem
 cfs:standard-packages
+cfs:graphicsmagick
