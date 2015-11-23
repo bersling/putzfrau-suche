@@ -15,7 +15,6 @@ Images = new FS.Collection("images", {
 });
 //END IMAGES
 
-
 if (Meteor.isClient) {
 
   angular.module('h2c').controller('HomeController', ['$scope',
