@@ -1,0 +1,16 @@
+{
+  "servers": [
+    {
+      "host": "46.101.209.18",
+      "username": "root",
+      "pem": "~/.ssh/id_rsa"
+    }
+  ],
+  "setupMongo": true,
+  "setupNode": true,
+  "setupPhantom": true,
+  "enableUploadProgressBar": true,
+  "appName": "help2clean-angular",
+  "app": ".",
+  "deployCheckWaitTime": 15
+}

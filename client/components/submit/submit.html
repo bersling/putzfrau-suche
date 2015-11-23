@@ -1,41 +1,39 @@
-<ul>
-  <div class="container center">
-  	<div class="page-wrapper">
-  		<h1>Gratis Inserat</h1>
-  		<br>
-  		<form role="form" class="inserat" ng-submit="submit()">
-  			<div class="form-group">
-  			  <!--label for="email">Email address:</label-->
-  			  <input required ng-model="newAd.name" type="text" class="form-control" id="name" name="name" placeholder="Name">
-  			</div>
-  			<div class="form-group">
-  			  <!--label for="email">Email address:</label-->
-  			  <input required ng-model="newAd.plz" type="number" class="form-control" id="plz" name="plz" placeholder="Postleitzahl" min="1000" max="9999">
-  			</div>
-  			<div class="form-group">
-  			  <!--label for="email">Email address:</label-->
-  			  <input required ng-model="newAd.age" type="number" class="form-control" id="age" name="age" placeholder="Alter" min="0" max="100">
-  			</div>
-  			<div class="form-group">
-  			  <!--label for="email">Email address:</label-->
-  			  <textarea required ng-model="newAd.description" type="text" class="form-control description-area" id="description" name="description" placeholder="Beschreiben Sie sich in ein paar Worten." maxlength="300"></textarea>
-  			</div>
-  			<div class="form-group">
-  			  <!--label for="email">Email address:</label-->
-  			  <input required ng-model="newAd.price" type="number" class="form-control" id="price" name="price" placeholder="Stundenlohn in CHF" min="0" max="100">
-  			</div>
-  			<div class="form-group">
-  			  <label for="email">Profilbild:</label>
-  			  <input required custom-on-change="uploadFile" type="file" class="form-control fileinput" id="pic" name="pic">
-  			</div>
-  		  <div class="form-group">
-  		    <!--label for="email">Email address:</label-->
-  		    <input required ng-model="newAd.email" type="email" class="form-control" id="email" name="email" placeholder="Kontakt E-Mail">
-  		  </div>
-  		  <button type="submit" class="btn btn-default">Submit</button>
-  		</form>
-  		<br>
-  		Ihr Inserat wird für 1 Monat aufgeschaltet. Danach werden alle Daten wieder gelöscht.
-  	</div>
-  </div>
-</ul>
+<div class="container center">
+	<div class="page-wrapper">
+		<h1>Gratis Inserat</h1>
+		<br>
+		<form role="form" class="inserat" ng-submit="submit()">
+			<div class="form-group">
+			  <!--label for="email">Email address:</label-->
+			  <input required ng-model="newAd.name" type="text" class="form-control" id="name" name="name" placeholder="Name">
+			</div>
+			<div class="form-group">
+			  <!--label for="email">Email address:</label-->
+			  <input required ng-model="newAd.plz" type="number" class="form-control" id="plz" name="plz" placeholder="Postleitzahl" min="1000" max="9999">
+			</div>
+			<div class="form-group">
+			  <!--label for="email">Email address:</label-->
+			  <input required ng-model="newAd.age" type="number" class="form-control" id="age" name="age" placeholder="Alter" min="0" max="100">
+			</div>
+			<div class="form-group">
+			  <!--label for="email">Email address:</label-->
+			  <textarea required ng-model="newAd.description" type="text" class="form-control description-area" id="description" name="description" placeholder="Beschreiben Sie sich in ein paar Worten." maxlength="300"></textarea>
+			</div>
+			<div class="form-group">
+			  <!--label for="email">Email address:</label-->
+			  <input required ng-model="newAd.price" type="number" class="form-control" id="price" name="price" placeholder="Stundenlohn in CHF" min="0" max="100">
+			</div>
+			<div class="form-group">
+			  <label for="email">Profilbild:</label>
+			  <input required custom-on-change="uploadFile" type="file" class="form-control fileinput" id="pic" name="pic">
+			</div>
+		  <div class="form-group">
+		    <!--label for="email">Email address:</label-->
+		    <input required ng-model="newAd.email" type="email" class="form-control" id="email" name="email" placeholder="Kontakt E-Mail">
+		  </div>
+		  <button type="submit" class="btn btn-default">Submit</button>
+		</form>
+		<br>
+		Ihr Inserat wird für 1 Monat aufgeschaltet. Danach werden alle Daten wieder gelöscht.
+	</div>
+</div>

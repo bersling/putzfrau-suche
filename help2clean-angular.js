@@ -75,7 +75,7 @@ if (Meteor.isClient) {
         $scope.newAd.created = new Date().getTime();
         Meteor.call('addAd', $scope.newAd);
         $state.go('search');
-      }
+      };
     }
   ]);
 
