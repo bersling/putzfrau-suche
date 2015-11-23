@@ -12,5 +12,9 @@
   "enableUploadProgressBar": true,
   "appName": "help2clean-angular",
   "app": ".",
+  "env": {
+    "PORT": 80,
+    "ROOT_URL": "http://putzfrau-suche-zuerich.ch"
+  },
   "deployCheckWaitTime": 15
 }
