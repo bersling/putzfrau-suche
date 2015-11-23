@@ -28,6 +28,9 @@ a:hover {
 	margin-bottom: 30px;
 }
 
+.container {
+	max-width: 400px;
+}
 
 
 .search-filters {
