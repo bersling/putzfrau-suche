@@ -22,3 +22,4 @@ cfs:filesystem
 cfs:standard-packages
 cfs:graphicsmagick
 http
+meteorhacks:kadira
