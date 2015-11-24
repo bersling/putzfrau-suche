@@ -1,8 +1,7 @@
-# Your app name, adapt
-appName=help2clean-angular
-rootUrl='http://putzfrau-suche.ch'
+#!/bin/bash
+source properties.sh
 
-tar -xvzf compiled/${appName}.tar.gz
+tar -xvzf compiled/*.tar.gz
 rm -rf compiled
 
 # rebuild native packages
@@ -11,8 +10,11 @@ cd ~
 
 # setup environment variables
 export MONGO_URL='mongodb://127.0.0.1'
-export ROOT_URL=${rootUrl}
-export PORT=80
+echo ${port}
+echo ${name}
+echo ${server}
+export ROOT_URL="http://${name}"
+export PORT=${port}
 
 # start the server
 killall -9 node
