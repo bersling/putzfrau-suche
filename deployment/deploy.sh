@@ -1,7 +1,10 @@
-server=root@46.101.201.6
+#!/bin/bash
+source properties.sh
 
-meteor build compiled
-scp -r compiled ${server}:compiled
-rm -rf compiled
+#meteor build compiled
+#scp -r compiled ${server}:compiled
+#rm -rf compiled
 scp  helper.sh ${server}:helper.sh
-ssh ${server} sh helper.sh
+scp  properties.sh ${server}:properties.sh
+ssh ${server} chmod +x helper.sh
+ssh ${server} ./helper.sh
