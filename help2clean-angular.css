@@ -41,6 +41,7 @@ a:hover {
 .page-wrapper {
 	max-width: 400px;
 	margin: 0 auto;
+	padding-bottom: 20px;
 }
 
 .mb {
@@ -88,6 +89,9 @@ div.half-screen-button:hover {
 	margin: 0;
 }
 
+#description {
+	height: 150px
+};
 
 .clearing {
 	clear: both;
