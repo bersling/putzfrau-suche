@@ -10,12 +10,9 @@ cd ~
 
 # setup environment variables
 export MONGO_URL='mongodb://127.0.0.1'
-echo ${port}
-echo ${name}
-echo ${server}
 export ROOT_URL="http://${name}"
 export PORT=${port}
 
 # start the server
-killall -9 node
-node bundle/main.js
+forever stop bundle/main.js
+forever start bundle/main.js
