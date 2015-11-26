@@ -17,6 +17,8 @@ Images = new FS.Collection("images", {
 
 if (Meteor.isClient) {
 
+  Spiderable.makeSpiderable('h2c');
+
   angular.module('h2c').controller('HomeController', ['$scope',
     function($scope) {
 

@@ -9,6 +9,7 @@ sudo apt-get install nodejs -y
 
 #install npm modules
 npm install -g forever
+npm install -g phantomjs
 
 #install mongo
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
