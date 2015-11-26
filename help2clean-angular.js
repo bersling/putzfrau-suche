@@ -57,7 +57,7 @@ if (Meteor.isClient) {
       $scope.ads = $meteor.collection(Ads);
       $scope.images = $meteor.collectionFS(Images, false, Images);
       $scope.newAd = {};
-      $scope.uploadFile = function() {
+      $scope.uploadFile = function(event) {
         FS.Utility.eachFile(event, function(file) {
           Images.insert(file, function(err, fileObj) {
             if (!err) {
