@@ -21,3 +21,7 @@ The HTML is divided into components and directives. It would be the goal to sepa
 All css is found in help2clean-angular.css
 
 The rest of the app follows the usual meteor rules: public is public, server is only server, etc. (meteor enforces this by folder name).
+
+### See the code in action
+
+Visit [putzfrau-suche.ch](http://putzfrau-suche.ch)
