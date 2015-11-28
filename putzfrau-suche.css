@@ -11,22 +11,25 @@ div.half-screen-button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-bottom: 1px dashed #00CA63;
 	padding: 30px;
+}
+
+.border-bottom {
+	border-bottom: 1px dashed #00CA63;
 }
 
 div.half-screen-button:hover {
 	cursor: pointer;
-	color: #00FE77;
+	color: #00E56B;
 }
 
 a {
-	color: #00E56B;
+	color: #00C963;
 }
 
 a:hover {
 	text-decoration: none;
-	color: #00FE77;
+	color: #00E56B;
 }
 
 a:focus {
@@ -35,7 +38,7 @@ a:focus {
 }
 
 .pc {
-	color: #00E56B;
+	color: #00C963;
 }
 
 h1 {

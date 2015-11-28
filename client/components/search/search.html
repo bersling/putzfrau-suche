@@ -18,7 +18,7 @@
     	<img class="card-img" ng-src="{{getImageUrl(ad.pic)}}" alt="">
 
 	    <h4 class="first">{{ad.name}}</h4>
-	    <p><a href="mailto:{{email}}" class="email">{{ad.email}}</a></p>
+	    <p><a ng-href="mailto:{{ad.email}}" class="email">{{ad.email}}</a></p>
 	    <p class="age">Alter: {{ad.age}}</p>
 	    <p class="price">Preis: {{ad.price}} CHF/h</p>
 	    <p class="price" ng-if="ad.plz && query.plz">Entfernung: {{ad.distance.text}}</p>
