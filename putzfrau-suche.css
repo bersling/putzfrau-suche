@@ -1,10 +1,5 @@
 /* CSS declarations go here */
 body {
-	font-family: 'Indie Flower', cursive;	
-	font-family: 'Poiret One', cursive;
-	font-family: 'Shadows Into Light', cursive;
-	font-family: 'Quicksand', sans-serif;
-
 	font-family: 'Open Sans', sans-serif;
 	/*background-image: url('/img/light_wool.png');*/
 }
@@ -16,13 +11,37 @@ div.half-screen-button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px dashed #00CA63;
 	padding: 30px;
+}
+
+div.half-screen-button:hover {
+	cursor: pointer;
+	color: #00FE77;
+}
+
+a {
+	color: #00E56B;
 }
 
 a:hover {
 	text-decoration: none;
+	color: #00FE77;
 }
+
+a:focus {
+	text-decoration: none;
+	color: #00FE77;
+}
+
+.pc {
+	color: #00E56B;
+}
+
+h1 {
+	font-family: 'Montserrat', sans-serif;
+}
+
 
 .search-card.mb {
 	margin-bottom: 30px;
@@ -46,11 +65,6 @@ a:hover {
 
 .mb {
 	margin-bottom: 20px;
-}
-
-div.half-screen-button:hover {
-	background: #F3F3F3;
-	cursor: pointer;
 }
 
 .page {
