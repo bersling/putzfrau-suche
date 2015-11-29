@@ -1,6 +1,4 @@
 Ads = new Mongo.Collection("ads");
-Coords = new Mongo.Collection("coords");
-Coordinates = new Mongo.Collection("coordinates");
 
 //IMAGES
 var createSquareThumb = function(fileObj, readStream, writeStream) {
