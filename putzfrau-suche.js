@@ -30,6 +30,7 @@ if (Meteor.isClient) {
       $scope.ads = $meteor.collection(Ads);
       $scope.images = $meteor.collectionFS(Images, false, Images);
       $scope.query = {};
+      $scope.orderParameter = '-created';
       $scope.getImageUrl = function(id) {
         var img = Images.findOne(id);
         if (img) {
@@ -39,17 +40,21 @@ if (Meteor.isClient) {
       $scope.updateDistances = function() {
 
         if ($scope.query.plz < 1000 || $scope.query.plz > 9999) {
+          $scope.orderParameter = '-created';
           return
         }
 
         angular.forEach($scope.ads, function(ad) {
           if (ad.plz) {
             Meteor.call('getDistance', $scope.query.plz, ad.plz, function(err, response) {
-              ad.distance = response
-              $scope.$apply();
+              ad.distance = response;
+              $scope.$apply(function() {
+                $scope.orderParameter = 'distance.value';
+              });
             });
           }
         });
+
       };
     }
   ]);
