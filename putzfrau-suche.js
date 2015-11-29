@@ -25,8 +25,8 @@ if (Meteor.isClient) {
     }
   ]);
 
-  angular.module('h2c').controller('SearchController', ['$scope', '$meteor',
-    function($scope, $meteor) {
+  angular.module('h2c').controller('SearchController', ['$scope', '$meteor', '$q',
+    function($scope, $meteor, $q) {
       $scope.ads = $meteor.collection(Ads);
       $scope.images = $meteor.collectionFS(Images, false, Images);
       $scope.query = {};
@@ -41,22 +41,31 @@ if (Meteor.isClient) {
 
         if ($scope.query.plz < 1000 || $scope.query.plz > 9999) {
           $scope.orderParameter = '-created';
-          return
-        }
+        } else {
+          $scope.orderParameter = 'distance.value';
+          angular.forEach($scope.ads, function(ad, index) {
+            delete ad.email;
+            delete $scope.ads[index].name;
+          });
 
-        angular.forEach($scope.ads, function(ad) {
-          if (ad.plz) {
-            Meteor.call('getDistance', $scope.query.plz, ad.plz, function(err, response) {
-              ad.distance = response;
-              $scope.$apply(function() {
-                $scope.orderParameter = 'distance.value';
-              });
+          var promises = [];
+          $scope.distances = [];
+          angular.forEach($scope.ads, function(ad) {
+            promises.push($meteor.call('getDistance', $scope.query.plz, ad.plz).then(function(response) {
+              return response;
+            }));
+          });
+          
+          $q.all(promises).then(function(data) {
+            angular.forEach($scope.ads, function(ad, index) {
+              ad.distance = data[index];
             });
-          }
-        });
+          });
+        }
 
       };
     }
+
   ]);
 
   angular.module('h2c').controller('SubmitController', ['$scope', '$meteor', '$state',

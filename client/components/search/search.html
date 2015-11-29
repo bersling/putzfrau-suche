@@ -20,7 +20,7 @@
 	    <h4 class="first">{{ad.name}}</h4>
 	    <p class="age">Alter: {{ad.age}}</p>
 	    <p class="price">Preis: {{ad.price}} CHF/h</p>
-	    <p class="price" ng-if="ad.plz && query.plz">Entfernung: {{ad.distance.text}}</p>
+	    <p class="price" ng-if="query.plz > 1000">Entfernung: {{ad.distance.text}}</p>
 	    <p class="d2">{{ad.description}}</p>
 	    <p><a ng-href="mailto:{{ad.email}}" class="email">{{ad.email}}</a></p>
 	    <p class="clearing"></p>
