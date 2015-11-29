@@ -1,4 +1,6 @@
 Ads = new Mongo.Collection("ads");
+Coords = new Mongo.Collection("coords");
+Coordinates = new Mongo.Collection("coordinates");
 
 //IMAGES
 var createSquareThumb = function(fileObj, readStream, writeStream) {
@@ -114,10 +116,23 @@ if (Meteor.isServer) {
 
   Meteor.methods({
     getDistance: function(origin, dest) {
+      //8000 is default      
+      //var originCoords = Coords.findOne({plz: origin}).coords || [47.360508,8.475219];
+      //var destCoords = Coords.findOne({plz: dest}).coords || [47.360508,8.475219];
+
+      /*
+      var distanceUrl = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" +
+        originCoords[0] + "," + originCoords[1] + "&destinations=" +
+        destCoords[0] + "," + destCoords[1] +
+        "&key=AIzaSyBTGVUac5RqaXPe_Dfsooz5ake9O0X2-Hs";
+        */
+
       var distanceUrl = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" +
         origin + ",Schweiz&destinations=" + dest +
         ",Schweiz&key=AIzaSyBTGVUac5RqaXPe_Dfsooz5ake9O0X2-Hs";
       var result = HTTP.get(distanceUrl);
+
+
       if (result.data.rows && result.data.rows[0]) {
         return result.data.rows[0].elements[0].distance;
       }
@@ -130,5 +145,6 @@ if (Meteor.isServer) {
   Meteor.startup(function() {
     //Ads.remove({});
     // code to run on server at startup
+
   });
 }
