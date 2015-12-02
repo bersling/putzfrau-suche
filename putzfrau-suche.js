@@ -87,10 +87,22 @@ if (Meteor.isClient) {
         });
       };
       $scope.submit = function() {
-        $scope.newAd.created = new Date().getTime();
-        Meteor.call('addAd', $scope.newAd);
-        $state.go('search');
-      };
+        var allFieldsNonEmpty = $scope.newAd.name &&
+            $scope.newAd.plz &&
+            $scope.newAd.email &&
+            $scope.newAd.pic &&
+            $scope.newAd.age &&
+            $scope.newAd.description &&
+            $scope.newAd.price;
+
+        if (allFieldsNonEmpty) {
+          $scope.newAd.created = new Date().getTime();
+          Meteor.call('addAd', $scope.newAd);
+          $state.go('search');
+        } else {
+          toastr.warning('Please fill out all fields');
+        }
+      }
     }
   ]);
 
