@@ -1,0 +1,9 @@
+@import 'mixins';
+
+.growing {
+  @include vendor-prefix(transition, all .5s);
+
+  &:hover {
+    @include vendor-prefix(transform, scale(1.1));
+  }
+}
