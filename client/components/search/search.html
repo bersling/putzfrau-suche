@@ -1,36 +1,38 @@
-<div class="container center div-center" ng-app="help2clean" ng-controller="SearchController">
+<div class="page-wrapper search">
+	<div class="container center div-center" ng-app="help2clean" ng-controller="SearchController">
 
-	<br>
-	<br>
+		<br>
+		<br>
 
-	<!--div>
-		Die Inserate sind maximal einen Monat alt und geordnet nach Datum.
-	</div>
-	<br-->
-
-	<div class="search-wrapper">
-		<input ng-model="query.plz" ng-change="updateDistances()" type="number" class="form-control" id="plz-query" placeholder="Ihre Postleitzahl">
-	</div>
-
-	<br>
-	<div class="cards-wrapper">
-		<div class="search-card mb" ng-repeat="ad in ads | orderBy: orderParameter">
-    	<img class="card-img" ng-src="{{getImageUrl(ad.pic)}}" alt="">
-
-	    <h4 class="first">{{ad.name}}</h4>
-	    <p class="age">Alter: {{ad.age}}</p>
-	    <p class="price">Preis: {{ad.price}} CHF/h</p>
-	    <p class="price" ng-if="query.plz > 1000">Entfernung: {{ad.distance.text}}</p>
-	    <p class="d2">{{ad.description}}</p>
-	    <p><a ng-href="mailto:{{ad.email}}" class="email">{{ad.email}}</a></p>
-	    <p class="clearing"></p>
-
+		<!--div>
+			Die Inserate sind maximal einen Monat alt und geordnet nach Datum.
 		</div>
-		<hr>
-		<div class="center">
-			Kontakt: <a href="mailto:support@putzfrau-suche.ch">support@putzfrau-suche.ch</a>
-		</div>
-	</div>
-	<br>
+		<br-->
 
+		<div class="search-wrapper">
+			<input ng-model="query.plz" ng-change="updateDistances()" type="number" class="form-control" id="plz-query" placeholder="Ihre Postleitzahl">
+		</div>
+
+		<br>
+		<div class="cards-wrapper">
+			<div class="search-card mb" ng-repeat="ad in ads | orderBy: orderParameter">
+	    	<img class="card-img" ng-src="{{getImageUrl(ad.pic)}}" alt="">
+
+		    <h4 class="first">{{ad.name}}</h4>
+		    <p class="age">Alter: {{ad.age}}</p>
+		    <p class="price">Preis: {{ad.price}} CHF/h</p>
+		    <p class="price" ng-if="query.plz > 1000">Entfernung: {{ad.distance.text}}</p>
+		    <p class="d2">{{ad.description}}</p>
+		    <p><a ng-href="mailto:{{ad.email}}" class="email">{{ad.email}}</a></p>
+		    <p class="clearing"></p>
+
+			</div>
+			<hr>
+			<div class="center">
+				Kontakt: <a href="mailto:support@putzfrau-suche.ch">support@putzfrau-suche.ch</a>
+			</div>
+		</div>
+		<br>
+
+	</div>
 </div>

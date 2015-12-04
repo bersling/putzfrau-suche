@@ -1,7 +1,29 @@
 /* CSS declarations go here */
+
+html {
+	height: 100%;
+}
+
 body {
 	font-family: 'Open Sans', sans-serif;
+	/*background-image: url('/img/bg/crossword.png');*/
 	/*background-image: url('/img/light_wool.png');*/
+}
+
+.page-wrapper {
+	height: 100%;
+}
+
+.submit {
+	background-image: url('/img/bg/crossword.png');
+}
+
+.search {
+	background-image: url('/img/bg/crossword.png');
+}
+
+.full-height {
+	height: 100%;
 }
 
 div.half-screen-button {
@@ -12,6 +34,7 @@ div.half-screen-button {
 	justify-content: center;
 	align-items: center;
 	padding: 30px;
+	background: white;
 }
 
 .border-bottom {
@@ -45,7 +68,6 @@ h1 {
 	font-family: 'Montserrat', sans-serif;
 }
 
-
 .search-card.mb {
 	margin-bottom: 30px;
 }
@@ -60,7 +82,7 @@ h1 {
 	margin: 0 auto;
 }
 
-.page-wrapper {
+.content-wrapper {
 	max-width: 400px;
 	margin: 0 auto;
 	padding-bottom: 20px;
@@ -86,7 +108,8 @@ h1 {
 	margin: 0 auto;
 	max-width: 400px;
 	position: relative;
-	background-image: url('/img/light_wool.png');
+	background-image: url('/img/bg/light_wool.png');
+	background: white;
 	box-shadow: 0 0 20px #ccc;
 	padding: 20px;
 }
