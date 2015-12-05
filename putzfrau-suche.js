@@ -120,7 +120,13 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
 
   Meteor.publish("ads", function () {
-    return Ads.find({});
+    var now = new Date().getTime();
+    var month = 2628000000;
+    var oneMonthAgo = now - month;
+
+    return Ads.find({
+      created: {$gt: oneMonthAgo}
+    });
   });
 
   Meteor.publish("images", function () {
@@ -158,7 +164,6 @@ if (Meteor.isServer) {
         origin + ",Schweiz&destinations=" + dest +
         ",Schweiz&key=AIzaSyBTGVUac5RqaXPe_Dfsooz5ake9O0X2-Hs";
       var result = HTTP.get(distanceUrl);
-
 
       if (result.data.rows && result.data.rows[0]) {
         return result.data.rows[0].elements[0].distance;
