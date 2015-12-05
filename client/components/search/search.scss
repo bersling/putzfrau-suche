@@ -1,0 +1,55 @@
+.cards-wrapper {
+	text-align: left;
+}
+
+.card-img {
+  float:left;
+  width: 130px ;
+  margin: -22px 20px 5px -30px;
+  transform: rotate(-3deg);
+  box-shadow: 0px 0px 2px #bbb;
+}
+
+.first {
+	font-size: 25px;
+}
+
+.age {
+	font-size: 14px;
+	margin-bottom: 0;
+}
+
+.price {
+	font-size: 14px;
+}
+
+
+#description {
+	height: 150px
+};
+
+.search-card {
+	margin: 0 auto;
+	max-width: 400px;
+	position: relative;
+	background-image: url('/img/bg/light_wool.png');
+	background: white;
+	box-shadow: 0 0 20px #ccc;
+	padding: 20px;
+}
+
+.email {
+	overflow: hidden;
+	font-size: 14px;
+}
+
+.search-wrapper {
+	max-width: 400px;
+	margin: auto;
+}
+
+
+.search-filters {
+	max-width: 400px;
+	margin: 0 auto;
+}

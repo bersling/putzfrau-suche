@@ -16,6 +16,7 @@
 		<br>
 		<div class="cards-wrapper">
 			<div class="search-card mb" ng-repeat="ad in ads | orderBy: orderParameter">
+				<i class="fa fa-times remove-top-right" ng-if="clientIP === ad.clientIP" ng-click="deleteAd(ad)"></i>
 	    	<img class="card-img" ng-src="{{getImageUrl(ad.pic)}}" alt="">
 
 		    <h4 class="first">{{ad.name}}</h4>

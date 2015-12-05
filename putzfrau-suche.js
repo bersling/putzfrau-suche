@@ -37,6 +37,15 @@ if (Meteor.isClient) {
           return Images.findOne(id).url();
         }
       };
+      $meteor.call('getClientIP').then(function(response) {
+        $scope.clientIP = response;
+      });
+      $scope.deleteAd = function(ad) {
+        var r = confirm("Möchten Sie das wirklich löschen?");
+        if (r) {
+          $meteor.call('deleteAd', ad._id);
+        }
+      };
       $scope.updateDistances = function() {
 
         if ($scope.query.plz < 1000 || $scope.query.plz > 9999) {
@@ -148,7 +157,15 @@ if (Meteor.isServer) {
       }
     },
     addAd: function(newAd) {
+      newAd.clientIP = this.connection.clientAddress;
       Ads.insert(newAd);
+    },
+    deleteAd: function(id) {
+      console.log('deleting')
+      Ads.remove({_id: id});
+    },
+    getClientIP: function() {
+      return this.connection.clientAddress;
     }
   });
 
