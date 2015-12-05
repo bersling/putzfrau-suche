@@ -25,8 +25,8 @@ if (Meteor.isClient) {
     }
   ]);
 
-  angular.module('h2c').controller('SearchController', ['$scope', '$meteor', '$q',
-    function($scope, $meteor, $q) {
+  angular.module('h2c').controller('SearchController', ['$scope', '$meteor', '$q', '$stateParams',
+    function($scope, $meteor, $q, $stateParams) {
       $scope.ads = $meteor.collection(Ads).subscribe('ads');;
       $scope.images = $meteor.collectionFS(Images, false, Images).subscribe('images');
       $scope.query = {};
@@ -36,6 +36,9 @@ if (Meteor.isClient) {
         if (img) {
           return Images.findOne(id).url();
         }
+      };
+      $scope.isAdmin = function() {
+        return $stateParams.key === "wW4JRfZ3kQqjaU7J"
       };
       $meteor.call('getClientIP').then(function(response) {
         $scope.clientIP = response;
