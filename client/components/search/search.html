@@ -4,10 +4,10 @@
 		<br>
 		<br>
 
-		<!--div>
-			Die Inserate sind maximal einen Monat alt und geordnet nach Datum.
+		<div>
+			Die Inserate sind maximal einen Monat alt und geordnet nach Datum oder Entfernung.
 		</div>
-		<br-->
+		<br>
 
 		<div class="search-wrapper">
 			<input ng-model="query.plz" ng-change="updateDistances()" type="number" class="form-control" id="plz-query" placeholder="Ihre Postleitzahl">
@@ -16,7 +16,7 @@
 		<br>
 		<div class="cards-wrapper">
 			<div class="search-card mb" ng-repeat="ad in ads | orderBy: orderParameter">
-				<i class="fa fa-times remove-top-right" ng-if="clientIP === ad.clientIP" ng-click="deleteAd(ad)"></i>
+				<i class="fa fa-times remove-top-right" ng-if="clientIP && clientIP === ad.clientIP" ng-click="deleteAd(ad)"></i>
 	    	<img class="card-img" ng-src="{{getImageUrl(ad.pic)}}" alt="">
 
 		    <h4 class="first">{{ad.name}}</h4>

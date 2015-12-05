@@ -27,8 +27,8 @@ if (Meteor.isClient) {
 
   angular.module('h2c').controller('SearchController', ['$scope', '$meteor', '$q',
     function($scope, $meteor, $q) {
-      $scope.ads = $meteor.collection(Ads);
-      $scope.images = $meteor.collectionFS(Images, false, Images);
+      $scope.ads = $meteor.collection(Ads).subscribe('ads');;
+      $scope.images = $meteor.collectionFS(Images, false, Images).subscribe('images');
       $scope.query = {};
       $scope.orderParameter = '-created';
       $scope.getImageUrl = function(id) {
@@ -118,6 +118,14 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
+
+  Meteor.publish("ads", function () {
+    return Ads.find({});
+  });
+
+  Meteor.publish("images", function () {
+    return Images.find({});
+  });
 
   Images.allow({
     download: function(userId, fileObj) {
