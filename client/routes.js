@@ -9,13 +9,17 @@ angular.module('h2c').config(function($urlRouterProvider, $stateProvider, $locat
       templateUrl: 'client/components/home/home.html',
       controller: 'HomeController'
     }).state('search', {
-      url: '/search?key',
+      url: '/search',
       templateUrl: 'client/components/search/search.html',
       controller: 'SearchController'
     }).state('submit', {
       url: '/submit',
       templateUrl: 'client/components/submit/submit.html',
       controller: 'SubmitController'
+    }).state('info', {
+      url: '/info',
+      templateUrl: 'client/components/info/info.html',
+      controller: 'InfoController'
     });
 
   $urlRouterProvider.otherwise("/");
