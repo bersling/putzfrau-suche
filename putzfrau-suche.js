@@ -11,7 +11,12 @@ var thumbStore = new FS.Store.FileSystem("thumbs", {
 });
 
 Images = new FS.Collection("images", {
-  stores: [thumbStore]
+  stores: [thumbStore],
+  filter: {
+    allow: {
+      contentTypes: ['image/*'] //allow only images in this FS.Collection
+    }
+  }
 });
 //END IMAGES
 
@@ -92,7 +97,7 @@ if (Meteor.isClient) {
               // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
               $scope.newAd.pic = fileObj._id;
             } else {
-              console.log(err)
+              toastr.warning('Please select an image file (.jpg, .png, ...)');
             }
 
           });
