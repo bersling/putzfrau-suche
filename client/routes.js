@@ -9,7 +9,7 @@ angular.module('h2c').config(function($urlRouterProvider, $stateProvider, $locat
       templateUrl: 'client/components/home/home.html',
       controller: 'HomeController'
     }).state('search', {
-      url: '/search',
+      url: '/search?key',
       templateUrl: 'client/components/search/search.html',
       controller: 'SearchController'
     }).state('submit', {
