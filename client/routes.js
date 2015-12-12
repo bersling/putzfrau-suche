@@ -9,11 +9,11 @@ angular.module('h2c').config(function($urlRouterProvider, $stateProvider, $locat
       templateUrl: 'client/components/home/home.html',
       controller: 'HomeController'
     }).state('search', {
-      url: '/search?key',
+      url: '/putzfrauen-inserate?key',
       templateUrl: 'client/components/search/search.html',
       controller: 'SearchController'
     }).state('submit', {
-      url: '/submit',
+      url: '/suche-job-als-putzfrau',
       templateUrl: 'client/components/submit/submit.html',
       controller: 'SubmitController'
     }).state('info', {

@@ -26,12 +26,13 @@ if (Meteor.isClient) {
 
   angular.module('h2c').controller('HomeController', ['$scope',
     function($scope) {
-
+      document.title = 'Putzfrauen suchen oder einfach inserieren'
     }
   ]);
 
   angular.module('h2c').controller('SearchController', ['$scope', '$meteor', '$q', '$stateParams',
     function($scope, $meteor, $q, $stateParams) {
+      document.title = 'Putzfrau Inserate';
       $scope.ads = $meteor.collection(Ads).subscribe('ads');;
       $scope.images = $meteor.collectionFS(Images, false, Images).subscribe('images');
       $scope.query = {};
@@ -87,6 +88,7 @@ if (Meteor.isClient) {
 
   angular.module('h2c').controller('SubmitController', ['$scope', '$meteor', '$state',
     function($scope, $meteor, $state) {
+      document.title = 'Suche Job als Putzfrau';
       $scope.ads = $meteor.collection(Ads);
       $scope.images = $meteor.collectionFS(Images, false, Images);
       $scope.newAd = {};
