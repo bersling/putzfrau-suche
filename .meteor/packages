@@ -22,6 +22,6 @@ cfs:standard-packages
 cfs:graphicsmagick
 http
 meteorhacks:kadira
-mrt:spiderable-ui-router
 chrismbeckett:toastr
 fourseven:scss
+mrt:spiderable-ui-router
