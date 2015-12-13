@@ -25,6 +25,13 @@
 		    <p class="price" ng-if="query.plz > 1000">Entfernung: {{ad.distance.text}}</p>
 		    <p class="d2">{{ad.description}}</p>
 		    <p><a ng-href="mailto:{{ad.email}}" class="email">{{ad.email}}</a></p>
+		    <p class="clearfix" ng-if="ad.languages" style="position: absolute; bottom: 0; right: 10px">
+		    	<span ng-repeat="(language, b) in ad.languages">
+		    		<span class="icon-wrapper flag-size-sm inline-block" ng-if="b">
+		    			<span class="flag-icon flag-icon-{{language}} rounded"></span>
+		    		</span>
+		    	</span>
+		    </p>
 		    <p class="clearing"></p>
 
 			</div>

@@ -76,8 +76,42 @@ h1 {
 	font-family: 'Montserrat', sans-serif;
 }
 
+.icon-md {
+	width: 35px;
+}
+
+.icon-wrapper {
+	padding: 0 3px;
+}
+
+.flag-icon {
+	&.rounded {
+		border-radius: 3px;
+
+		//border: 1px solid #ccc;
+	}
+	&:hover {
+		cursor: pointer;
+	}
+	&.selected {
+		box-shadow: 0 0 10px $primary;
+	}
+}
+
+.flag-size-md {
+	font-size: 25px
+}
+
+.flag-size-sm {
+	font-size: 15px
+}
+
 .search-card.mb {
 	margin-bottom: 30px;
+}
+
+.inline-block {
+	display: inline-block;
 }
 
 .container {

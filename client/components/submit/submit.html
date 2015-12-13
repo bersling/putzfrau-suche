@@ -1,7 +1,9 @@
 <div class="page-wrapper submit">
 	<div class="container center">
 		<div class="content-wrapper">
-			<img src="/img/cleaning.jpg" style="max-width:300px" alt="Putzmittel Bild">
+			<a href="/">
+				<img src="/img/cleaning.jpg" style="max-width:300px" alt="Putzmittel Bild">
+			</a>
 			<h1 class="pc" style="margin-top: 30px">Suchen Sie einen Job als Putzfrau?</h1>
 			<h3>Dann sind Sie hier richtig!</h3>
 			<br>
@@ -36,7 +38,18 @@
 					  <input required ng-model="newAd.price" type="number" class="form-control" id="price" name="price" placeholder="Stundenlohn in CHF" min="0" max="100">
 					</div>
 					<div class="form-group">
-					  <label for="email">Profilbild:</label>
+					  <label for="language">Welche Sprachen sprechen Sie?</label>
+					  <div>
+					  	<span ng-repeat="language in languages">
+					  		<span class="icon-wrapper flag-size-md inline-block" ng-click="newAd.languages[language] = !newAd.languages[language]">
+					  			<div class="flag-icon flag-icon-{{language}} rounded" ng-class="{selected: newAd.languages[language]}"></div>
+					  			<div style="font-size:10px; color: #444">{{language}}</div>
+					  		</span>
+					  	</span>
+					  </div>
+					</div>
+					<div class="form-group">
+					  <label for="pic">Profilbild:</label>
 					  <input required custom-on-change="uploadFile" type="file" class="form-control fileinput" id="pic" name="pic">
 					</div>
 				  <div class="form-group">
