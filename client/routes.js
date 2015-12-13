@@ -17,7 +17,7 @@ angular.module('h2c').config(function($urlRouterProvider, $stateProvider, $locat
       templateUrl: 'client/components/submit/submit.html',
       controller: 'SubmitController'
     }).state('info', {
-      url: '/info',
+      url: '/putzfrau-anstellen-rechtliches',
       templateUrl: 'client/components/info/info.html',
       controller: 'InfoController'
     });

@@ -30,6 +30,12 @@ if (Meteor.isClient) {
     }
   ]);
 
+  angular.module('h2c').controller('InfoController', ['$scope',
+    function($scope) {
+      document.title = 'Rechtliche Schritte um eine Putzfrau anzustellen'
+    }
+  ]);
+
   angular.module('h2c').controller('SearchController', ['$scope', '$meteor', '$q', '$stateParams',
     function($scope, $meteor, $q, $stateParams) {
       document.title = 'Putzfrau Inserate';
