@@ -41,7 +41,7 @@
 					  <label for="language">Welche Sprachen sprechen Sie?</label>
 					  <div>
 					  	<span ng-repeat="language in languages">
-					  		<span class="icon-wrapper flag-size-md inline-block" ng-click="newAd.languages[language] = !newAd.languages[language]">
+					  		<span class="icon-wrapper hoverable flag-size-md inline-block" ng-click="newAd.languages[language] = !newAd.languages[language]">
 					  			<div class="flag-icon flag-icon-{{language}} rounded" ng-class="{selected: newAd.languages[language]}"></div>
 					  			<div style="font-size:10px; color: #444">{{language}}</div>
 					  		</span>

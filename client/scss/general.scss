@@ -84,14 +84,17 @@ h1 {
 	padding: 0 3px;
 }
 
+.hoverable {
+	&:hover {
+		cursor: pointer;
+	}
+}
+
 .flag-icon {
 	&.rounded {
 		border-radius: 3px;
 
 		//border: 1px solid #ccc;
-	}
-	&:hover {
-		cursor: pointer;
 	}
 	&.selected {
 		box-shadow: 0 0 10px $primary;
