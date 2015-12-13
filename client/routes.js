@@ -5,19 +5,19 @@ angular.module('h2c').config(function($urlRouterProvider, $stateProvider, $locat
 
   $stateProvider
     .state('home', {
-      url: '/',
+      url: '/:cc',
       templateUrl: 'client/components/home/home.html',
       controller: 'HomeController'
     }).state('search', {
-      url: '/putzfrau-inserate?key',
+      url: '/:cc/putzfrau-inserate?key',
       templateUrl: 'client/components/search/search.html',
       controller: 'SearchController'
     }).state('submit', {
-      url: '/suche-job-als-putzfrau',
+      url: '/:cc/suche-job-als-putzfrau',
       templateUrl: 'client/components/submit/submit.html',
       controller: 'SubmitController'
     }).state('info', {
-      url: '/putzfrau-anstellen-rechtliches',
+      url: '/:cc/putzfrau-anstellen-rechtliches',
       templateUrl: 'client/components/info/info.html',
       controller: 'InfoController'
     });

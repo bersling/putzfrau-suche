@@ -24,15 +24,16 @@ if (Meteor.isClient) {
 
   Spiderable.makeSpiderable('h2c');
 
+
   angular.module('h2c').controller('HomeController', ['$scope',
     function($scope) {
-      document.title = 'Putzfrauen suchen oder einfach inserieren'
+      document.title = 'Putzfrauen suchen oder einfach inserieren';
     }
   ]);
 
   angular.module('h2c').controller('InfoController', ['$scope',
     function($scope) {
-      document.title = 'Rechtliche Schritte um eine Putzfrau anzustellen'
+      document.title = 'Rechtliche Schritte um eine Putzfrau anzustellen';
     }
   ]);
 
