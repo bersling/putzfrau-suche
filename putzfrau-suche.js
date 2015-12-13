@@ -44,6 +44,9 @@ if (Meteor.isClient) {
       $scope.images = $meteor.collectionFS(Images, false, Images).subscribe('images');
       $scope.query = {};
       $scope.orderParameter = '-created';
+      $scope.getRandomCode = function() {
+        return Session.get('randomCode');
+      }
       $scope.getImageUrl = function(id) {
         var img = Images.findOne(id);
         if (img) {
@@ -93,14 +96,17 @@ if (Meteor.isClient) {
 
   ]);
 
-  angular.module('h2c').controller('SubmitController', ['$scope', '$meteor', '$state',
-    function($scope, $meteor, $state) {
+  angular.module('h2c').controller('SubmitController', ['$scope', '$meteor', '$state', '$rootScope',
+    function($scope, $meteor, $state, $rootScope) {
       document.title = 'Suche Job als Putzfrau';
       $scope.ads = $meteor.collection(Ads);
       $scope.images = $meteor.collectionFS(Images, false, Images);
       $scope.newAd = {};
       $scope.newAd.languages = {};
       $scope.languages = ['de', 'fr', 'it', 'hr', 'al', 'gb', 'pt', 'es', 'tr', 'in', 'nl', 'ru', 'cn', 'th', 'mk', 'hu'];
+      var randomCode = Math.random();
+      $scope.newAd.randomCode = randomCode;
+      Session.set('randomCode', randomCode);
       $scope.uploadFile = function(event) {
         FS.Utility.eachFile(event, function(file) {
           Images.insert(file, function(err, fileObj) {
@@ -126,7 +132,7 @@ if (Meteor.isClient) {
         if (allFieldsNonEmpty) {
           $scope.newAd.created = new Date().getTime();
           Meteor.call('addAd', $scope.newAd);
-          $state.go('search');
+          $state.go('search', {cc: $rootScope.cc || 'de'});
         } else {
           toastr.warning('Please fill out all fields');
         }
