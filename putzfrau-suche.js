@@ -131,7 +131,6 @@ if (Meteor.isClient) {
             } else {
               toastr.warning('Please select an image file (.jpg, .png, ...)');
             }
-
           });
         });
       };
@@ -146,12 +145,16 @@ if (Meteor.isClient) {
 
         if (allFieldsNonEmpty) {
           $scope.newAd.created = new Date().getTime();
+
           if ($scope.freshAd) {
+            var url = window.location.origin + $state.href('search', {cc: $rootScope.cc || 'de', key: $scope.newAd.key});
+            Meteor.call('sendMail', $scope.newAd, url);
             Meteor.call('addAd', $scope.newAd); 
           }
           else {
             Meteor.call('updateAd', $scope.newAd);
           }
+
           $state.go('search', {cc: $rootScope.cc || 'de', key: $scope.newAd.key});
         } else {
           toastr.warning('Please fill out all fields');
@@ -193,6 +196,17 @@ if (Meteor.isServer) {
   });
 
   Meteor.methods({
+    sendMail: function (newAd, url) {
+      var html = 'Vielen Dank, dass Sie auf putzfrau-suche.ch inseriert haben! <br> Um Ihr Inserat zu editieren, klicken Sie auf: <a href=' + url + '>' + url + '</a> <br><br> Freundliche Grüsse <br> Ihr putzfrau-suche.ch Team';
+      var optionsSendInfo = {
+          from: "kontakt@putzfrau-suche.ch",
+          to: [newAd.email],
+          bcc: ["bersling@gmail.com"],
+          subject: "Link zum Editieren auf putzfrau-suche.ch",
+          html: html
+      }
+      Email.send(optionsSendInfo);
+    },
     getAd: function(id) {
       var ad = Ads.findOne({_id: id});
       return ad;
