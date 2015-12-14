@@ -5,7 +5,7 @@ angular.module('h2c').config(function($urlRouterProvider, $stateProvider, $locat
 
   $stateProvider
     .state('home', {
-      url: '/:cc',
+      url: '/:cc?key',
       templateUrl: 'client/components/home/home.html',
       controller: 'HomeController'
     }).state('search', {
@@ -13,11 +13,11 @@ angular.module('h2c').config(function($urlRouterProvider, $stateProvider, $locat
       templateUrl: 'client/components/search/search.html',
       controller: 'SearchController'
     }).state('submit', {
-      url: '/:cc/suche-job-als-putzfrau',
+      url: '/:cc/suche-job-als-putzfrau?key',
       templateUrl: 'client/components/submit/submit.html',
       controller: 'SubmitController'
     }).state('info', {
-      url: '/:cc/putzfrau-anstellen-rechtliches',
+      url: '/:cc/putzfrau-anstellen-rechtliches?key',
       templateUrl: 'client/components/info/info.html',
       controller: 'InfoController'
     });
