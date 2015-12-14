@@ -69,7 +69,7 @@ a:focus {
 }
 
 .narrow-width {
-	max-width: 400px
+	max-width: 400px;
 }
 
 .pc {
@@ -123,6 +123,10 @@ h1 {
 
 .container {
 	max-width: 700px;
+
+	&.narrow-width {
+		max-width: 400px;
+	}
 }
 
 .content-wrapper {
