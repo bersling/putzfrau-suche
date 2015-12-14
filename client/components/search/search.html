@@ -16,7 +16,13 @@
 		<br>
 		<div class="cards-wrapper">
 			<div class="search-card mb" ng-repeat="ad in ads | orderBy: orderParameter">
-				<i class="fa fa-times remove-top-right" ng-if="ad.randomCode && ad.randomCode === getRandomCode() || isAdmin()" ng-click="deleteAd(ad)"></i>
+				<span class="navbar">
+					<a href="" ui-sref="submit({cc:cc || 'de', key: key, ad: ad._id})">
+						<i class="fa fa-pencil-square-o edit" ng-if="ad.key && ad.key === key || isAdmin()" ></i>
+					</a>
+					&nbsp;
+					<i class="fa fa-trash-o remove" ng-if="ad.key && ad.key === key || isAdmin()" ng-click="deleteAd(ad)"></i>
+				</span>
 	    	<img class="card-img" ng-src="{{getImageUrl(ad.pic)}}" alt="Putzfrau Bild">
 
 		    <h4 class="first">{{ad.name}}</h4>

@@ -13,7 +13,7 @@ angular.module('h2c').config(function($urlRouterProvider, $stateProvider, $locat
       templateUrl: 'client/components/search/search.html',
       controller: 'SearchController'
     }).state('submit', {
-      url: '/:cc/suche-job-als-putzfrau?key',
+      url: '/:cc/suche-job-als-putzfrau?key?ad',
       templateUrl: 'client/components/submit/submit.html',
       controller: 'SubmitController'
     }).state('info', {

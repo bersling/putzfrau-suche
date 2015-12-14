@@ -1,3 +1,5 @@
+@import 'mixins', 'variables';
+
 .cards-wrapper {
 	text-align: left;
 }
@@ -28,6 +30,12 @@
 	height: 150px
 };
 
+.edit-top-right {
+	position: absolute;
+	top: -5px;
+	right: -20px;
+}
+
 .search-card {
 	margin: 0 auto;
 	max-width: 400px;
@@ -35,6 +43,27 @@
 	background-image: url('/img/bg/cream_dust.png');
 	box-shadow: 0 0 20px #ccc;
 	padding: 20px;
+
+	.navbar {
+		color: #ccc;	
+		font-size: 20px;
+		top: 5px;
+		right: 5px;
+		width: 60px;
+		position: absolute;
+
+		.remove {
+			&:hover {
+				color: red;
+				cursor: pointer;
+			}
+		}
+
+		&.fa {
+			font-size: 20px;
+		}
+
+	}
 }
 
 .email {

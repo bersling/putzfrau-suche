@@ -37,16 +37,14 @@ if (Meteor.isClient) {
     }
   ]);
 
-  angular.module('h2c').controller('SearchController', ['$scope', '$meteor', '$q', '$stateParams',
-    function($scope, $meteor, $q, $stateParams) {
+  angular.module('h2c').controller('SearchController', ['$scope', '$meteor', '$q', '$stateParams', '$rootScope',
+    function($scope, $meteor, $q, $stateParams, $rootScope) {
       document.title = 'Putzfrau Inserate';
       $scope.ads = $meteor.collection(Ads).subscribe('ads');;
       $scope.images = $meteor.collectionFS(Images, false, Images).subscribe('images');
       $scope.query = {};
       $scope.orderParameter = '-created';
-      $scope.getRandomCode = function() {
-        return Session.get('randomCode');
-      }
+      $scope.key = $stateParams.key;
       $scope.getImageUrl = function(id) {
         var img = Images.findOne(id);
         if (img) {
@@ -96,17 +94,34 @@ if (Meteor.isClient) {
 
   ]);
 
-  angular.module('h2c').controller('SubmitController', ['$scope', '$meteor', '$state', '$rootScope',
-    function($scope, $meteor, $state, $rootScope) {
+  angular.module('h2c').controller('SubmitController', ['$scope', '$meteor', '$state', '$rootScope', '$stateParams',
+    function($scope, $meteor, $state, $rootScope, $stateParams) {
       document.title = 'Suche Job als Putzfrau';
       $scope.ads = $meteor.collection(Ads);
       $scope.images = $meteor.collectionFS(Images, false, Images);
-      $scope.newAd = {};
-      $scope.newAd.languages = {};
+
+      //initialize
+      var initialize = function() {
+        $scope.freshAd = true;
+        $scope.newAd = {};
+        $scope.newAd.languages = {};
+        var key = Math.random().toString(36).substr(2, 12);
+        $scope.newAd.key = key;
+      };
+
+      if ($stateParams.ad) {
+        $meteor.call('getAd', $stateParams.ad).then(function(response) {
+          if (response) {
+            $scope.newAd = response;
+          } else {
+            initialize();
+          }
+        });
+      } else {
+        initialize();
+      }
+
       $scope.languages = ['de', 'fr', 'it', 'hr', 'al', 'gb', 'pt', 'es', 'tr', 'in', 'nl', 'ru', 'cn', 'th', 'mk', 'hu'];
-      var randomCode = Math.random();
-      $scope.newAd.randomCode = randomCode;
-      Session.set('randomCode', randomCode);
       $scope.uploadFile = function(event) {
         FS.Utility.eachFile(event, function(file) {
           Images.insert(file, function(err, fileObj) {
@@ -131,8 +146,13 @@ if (Meteor.isClient) {
 
         if (allFieldsNonEmpty) {
           $scope.newAd.created = new Date().getTime();
-          Meteor.call('addAd', $scope.newAd);
-          $state.go('search', {cc: $rootScope.cc || 'de'});
+          if ($scope.freshAd) {
+            Meteor.call('addAd', $scope.newAd); 
+          }
+          else {
+            Meteor.call('updateAd', $scope.newAd);
+          }
+          $state.go('search', {cc: $rootScope.cc || 'de', key: $scope.newAd.key});
         } else {
           toastr.warning('Please fill out all fields');
         }
@@ -155,7 +175,6 @@ if (Meteor.isServer) {
   });
 
   Meteor.publish("images", function () {
-
     return Images.find({});
   });
 
@@ -174,6 +193,10 @@ if (Meteor.isServer) {
   });
 
   Meteor.methods({
+    getAd: function(id) {
+      var ad = Ads.findOne({_id: id});
+      return ad;
+    },
     getDistance: function(origin, dest) {
       //8000 is default      
       //var originCoords = Coords.findOne({plz: origin}).coords || [47.360508,8.475219];
@@ -196,11 +219,12 @@ if (Meteor.isServer) {
       }
     },
     addAd: function(newAd) {
-      newAd.clientIP = this.connection.clientAddress;
       Ads.insert(newAd);
     },
+    updateAd: function(newAd) {
+      Ads.update({_id: newAd._id}, newAd);
+    },
     deleteAd: function(id) {
-      console.log('deleting')
       Ads.remove({_id: id});
     },
     getClientIP: function() {
