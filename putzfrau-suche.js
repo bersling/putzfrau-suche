@@ -168,12 +168,15 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
 
   Meteor.publish("ads", function () {
-    var now = new Date().getTime();
-    var month = 2628000000;
-    var oneMonthAgo = now - month;
+
+    var nMonthsAgo = function(n) {
+      var now = new Date().getTime();
+      var month = 2628000000;
+      return now - n*month;
+    }
 
     return Ads.find({
-      created: {$gt: oneMonthAgo}
+      created: {$gt: nMonthsAgo(3)}
     });
   });
 
