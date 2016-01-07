@@ -1,12 +1,16 @@
 <div class="page-wrapper search">
 	<div class="container narrow-width center div-center" ng-controller="SearchController">
-
-		<br>
-		<br>
-
-		<div>
-			Die Inserate sind maximal drei Monate alt und geordnet nach Datum oder Entfernung.
+		<br><br>
+		<div class="vertical-align">
+			<a href="/" ui-sref="home({cc: cc || 'de'})" class="back-button">
+				<i class="fa fa-arrow-circle-left"></i>
+			</a>
+			&nbsp;&nbsp;&nbsp;
+			<span style="text-align:left">
+				Die Inserate sind maximal drei Monate alt und geordnet nach Datum oder Entfernung.
+			</span>
 		</div>
+
 		<br>
 
 		<div class="search-wrapper">
@@ -48,6 +52,12 @@
 			<hr>
 			<div class="center">
 				Kontakt: <a href="mailto:support@putzfrau-suche.ch">support@putzfrau-suche.ch</a>
+			</div>
+			<hr>
+			<div class="center">
+				<a href="/" ui-sref="home({cc: cc || 'de'})" class="back-button">
+					<i class="fa fa-arrow-circle-left"></i>
+				</a>
 			</div>
 		</div>
 		<br>

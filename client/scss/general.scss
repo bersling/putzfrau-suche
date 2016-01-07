@@ -56,11 +56,24 @@ div.half-screen-button:hover {
 
 a {
 	color: #00C963;
+	&:hover {
+		text-decoration: none;
+		color: #00E56B;
+	}
 }
 
-a:hover {
-	text-decoration: none;
-	color: #00E56B;
+.vertical-align {
+  display: flex;
+  align-items: center;
+}
+
+.back-button {
+	color: #00C963;
+	&:hover {
+		text-decoration: none;
+		color: #00E56B;
+	}
+	font-size: 30px;
 }
 
 a:focus {

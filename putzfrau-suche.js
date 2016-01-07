@@ -169,14 +169,14 @@ if (Meteor.isServer) {
 
   Meteor.publish("ads", function () {
 
-    var nMonthsAgo = function(n) {
+    var monthsAgo = function(n) {
       var now = new Date().getTime();
       var month = 2628000000;
       return now - n*month;
     }
 
     return Ads.find({
-      created: {$gt: nMonthsAgo(3)}
+      created: {$gt: monthsAgo(3)}
     });
   });
 
