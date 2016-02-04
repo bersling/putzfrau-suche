@@ -41,7 +41,7 @@
 					&nbsp;
 					<i class="fa fa-trash-o remove" ng-if="ad.key && ad.key === key || isAdmin()" ng-click="deleteAd(ad)"></i>
 				</span>
-	    	<img class="card-img" ng-if="getImageUrl(ad.pic)" ng-src="{{getImageUrl(ad.pic)}}" alt="Putzfrau Bild">
+	    	<img class="card-img" ng-if="getImageUrl(ad.pic)" ng-src="{{getImageUrl(ad.pic)}}" alt="Profilbild">
 	    	<img class="card-img" ng-if="!getImageUrl(ad.pic)" src="/img/pf.png" alt="Putzfrau Bild">
 
 		    <h4 class="first">{{ad.name}}</h4>
