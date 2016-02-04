@@ -1,6 +1,21 @@
 <div class="page-wrapper search">
 	<div class="container narrow-width center div-center" ng-controller="SearchController">
 		<br><br>
+
+
+		<div class="floating-button">
+			<a href="javascript:void(0);" ui-sref="submit({cc: cc || 'de', key: key})">
+				<div class="icon">
+					<i class="fa fa-plus"></i>
+				</div>
+				<!--div class="text">
+					<strong>Gratis Inserat</strong>
+				</div-->
+			</a>
+		</div>
+
+		        
+
 		<div class="vertical-align">
 			<!--a href="/" ui-sref="home({cc: cc || 'de'})" class="back-button" style="padding-right: 15px">
 				<i class="fa fa-arrow-circle-left"></i>
@@ -26,14 +41,15 @@
 					&nbsp;
 					<i class="fa fa-trash-o remove" ng-if="ad.key && ad.key === key || isAdmin()" ng-click="deleteAd(ad)"></i>
 				</span>
-	    	<img class="card-img" ng-src="{{getImageUrl(ad.pic)}}" alt="Putzfrau Bild">
+	    	<img class="card-img" ng-if="getImageUrl(ad.pic)" ng-src="{{getImageUrl(ad.pic)}}" alt="Putzfrau Bild">
+	    	<img class="card-img" ng-if="!getImageUrl(ad.pic)" src="/img/pf.png" alt="Putzfrau Bild">
 
 		    <h4 class="first">{{ad.name}}</h4>
 		    <p class="age">Alter: {{ad.age}}</p>
 		    <p class="price">Preis: {{ad.price}} CHF/h</p>
 		    <p class="price" ng-if="query.plz > 1000">Entfernung: {{ad.distance.text}}</p>
 		    <p class="d2">{{ad.description}}</p>
-		    <p><a ng-href="mailto:{{ad.email}}" class="email">{{ad.email}}</a></p>
+		    <p><a ng-href="mailto:{{ad.email}}?cc=support@putzfrau-suche.ch" class="email">{{ad.email}}</a></p>
 		    <p class="clearfix" ng-if="ad.languages" style="position: absolute; bottom: 0; right: 10px">
 		    	<span ng-repeat="(language, b) in ad.languages">
 		    		<span class="icon-wrapper flag-size-sm inline-block" ng-if="b">
@@ -47,17 +63,17 @@
 			<hr>
 			<div class="center">
 				<a href="#" ui-sref="info({cc: cc || 'de'})">Was muss ich rechtlich alles erledigen?</a>
-			</div>
-			<hr>
-			<div class="center">
+				<hr>
 				Kontakt: <a href="mailto:support@putzfrau-suche.ch">support@putzfrau-suche.ch</a>
+				<hr>
+				<br><br><br>
 			</div>
-			<hr>
-			<div class="center">
+
+			<!--div class="center">
 				<a href="/" ui-sref="home({cc: cc || 'de'})" class="back-button">
 					<i class="fa fa-arrow-circle-left"></i>
 				</a>
-			</div>
+			</div-->
 		</div>
 		<br>
 

@@ -10,6 +10,29 @@ body {
 	/*background-image: url('/img/light_wool.png');*/
 }
 
+.floating-button {
+	position: fixed;
+	bottom: 20px;
+	z-index: 2;
+	margin-left: 290px;
+	width: 65px;
+	transition: all 1s ease-in-out;
+	.icon {
+		box-shadow: 0px 0px 10px #666;
+		padding: 15px 22px;
+		background: $primary;
+		color: white;
+		border-radius: 100px;
+		font-size: 25px;
+	}
+	.text {
+		color: $primary;
+	}
+	&:hover {
+		transform: rotate(360deg);
+	}
+}
+
 .fs17 {
 	font-size: 17px;
 }

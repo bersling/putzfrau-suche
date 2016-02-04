@@ -6,8 +6,8 @@ angular.module('h2c').config(function($urlRouterProvider, $stateProvider, $locat
   $stateProvider
     .state('home', {
       url: '/:cc?key',
-      templateUrl: 'client/components/home/home.html',
-      controller: 'HomeController'
+      templateUrl: 'client/components/search/search.html',
+      controller: 'SearchController'
     }).state('search', {
       url: '/:cc/putzfrau-inserate?key',
       templateUrl: 'client/components/search/search.html',
