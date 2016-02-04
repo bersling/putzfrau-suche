@@ -12,7 +12,6 @@ jquery                  # Helpful client-side library
 tracker                 # Meteor's client-side reactive programming library
 
 standard-minifiers      # JS/CSS minifiers run for production mode
-es5-shim                # ECMAScript 5 compatibility for older browsers.
 
 angular
 angularui:angular-ui-router
@@ -26,3 +25,4 @@ chrismbeckett:toastr
 fourseven:scss
 mrt:spiderable-ui-router
 email
+es5-shim

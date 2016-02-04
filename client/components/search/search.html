@@ -49,7 +49,8 @@
 		    <p class="price">Preis: {{ad.price}} CHF/h</p>
 		    <p class="price" ng-if="query.plz > 1000">Entfernung: {{ad.distance.text}}</p>
 		    <p class="d2">{{ad.description}}</p>
-		    <p><a ng-href="mailto:{{ad.email}}?cc=support@putzfrau-suche.ch" class="email">{{ad.email}}</a></p>
+		    <!--p><a ng-href="mailto:{{ad.email}}?cc=support@putzfrau-suche.ch" class="email">{{ad.email}}</a></p-->
+		    <p><a ui-sref="contact({cc: cc || 'de', ad: ad._id})" class="email">Nachricht senden</a></p>
 		    <p class="clearfix" ng-if="ad.languages" style="position: absolute; bottom: 0; right: 10px">
 		    	<span ng-repeat="(language, b) in ad.languages">
 		    		<span class="icon-wrapper flag-size-sm inline-block" ng-if="b">

@@ -37,6 +37,41 @@ if (Meteor.isClient) {
     }
   ]);
 
+  angular.module('h2c').controller('ContactController',
+    ['$scope',
+    '$meteor',
+    '$stateParams',
+    '$state',
+    function($scope, $meteor, $stateParams, $state) {
+      document.title = 'Kontakt';
+
+      if ($stateParams.ad) {
+        $meteor.call('getAd', $stateParams.ad).then(function(response) {
+          $scope.ad = response;
+        });
+      }
+
+      $scope.submit = function() {
+        if ($scope.ad) {
+          var message = $scope.message;
+          var allFieldsNonEmpty = message.from &&
+              message.content &&
+              message.name;
+          if (allFieldsNonEmpty) {
+            Meteor.call('sendMessage', $scope.message, $scope.ad);
+            $state.go('home');
+            toastr.success('Message sent');
+          } else {
+            toastr.warning('Please fill out all fields');
+          }
+        } else {
+          toastr.warning('Nothing was selected');
+        }
+      };
+
+    }
+  ]);
+
   angular.module('h2c').controller('SearchController', ['$scope', '$meteor', '$q', '$stateParams', '$rootScope',
     function($scope, $meteor, $q, $stateParams, $rootScope) {
       document.title = 'Putzfrau Inserate';
@@ -208,6 +243,17 @@ if (Meteor.isServer) {
           subject: "Link zum Editieren auf putzfrau-suche.ch",
           html: html
       }
+      Email.send(optionsSendInfo);
+    },
+    sendMessage: function(message, ad) {
+      var html = '<div style="white-space: pre-wrap">' + message.content + '</div>';
+      var optionsSendInfo = {
+        from: message.from,
+        to: [ad.email],
+        bcc: ["support@putzfrau-suche.ch"],
+        subject: 'Nachricht von ' + message.name,
+        html: html
+      };
       Email.send(optionsSendInfo);
     },
     getAd: function(id) {

@@ -20,6 +20,10 @@ angular.module('h2c').config(function($urlRouterProvider, $stateProvider, $locat
       url: '/:cc/putzfrau-anstellen-rechtliches?key',
       templateUrl: 'client/components/info/info.html',
       controller: 'InfoController'
+    }).state('contact', {
+      url: '/:cc/kontakt?ad',
+      templateUrl: 'client/components/contact/contact.html',
+      controller: 'ContactController'
     });
 
   $urlRouterProvider.otherwise("/");
