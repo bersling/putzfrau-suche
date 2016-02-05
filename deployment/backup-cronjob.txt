@@ -1,1 +1,3 @@
-0 * * * * ~/backup2.sh
+0 * * * * ~/backup2.sh hour
+0 0 * * * ~/backup2.sh day
+0 0 1 * * ~/backup2.sh month
